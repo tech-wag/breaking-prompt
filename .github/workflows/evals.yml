@@ -1,0 +1,55 @@
+name: eval gate
+
+# Runs the eval suite on every pull request that touches prompts or code,
+# compares it with the committed baseline, comments the report on the PR,
+# and fails the check if quality regressed or cost jumped.
+
+on:
+  pull_request:
+    paths: ["demo/**", "src/**", "evals/**", "pyproject.toml", ".github/workflows/evals.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  eval-gate:
+    runs-on: ubuntu-latest
+    env:
+      # "mock" runs offline with no keys. Set the repo variable EVALGATE_MODEL to
+      # e.g. anthropic:<model-id> and add the matching secret to use a real model
+      # (then regenerate evals/baseline.json with that model).
+      EVALGATE_MODEL: ${{ vars.EVALGATE_MODEL || 'mock' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[anthropic,openai,gemini]"
+
+      - name: Run evals against the baseline
+        run: pytest --evalgate-report evalgate-report.md
+
+      - name: Add report to the job summary
+        if: always()
+        run: '[ -f evalgate-report.md ] && cat evalgate-report.md >> "$GITHUB_STEP_SUMMARY" || true'
+
+      - name: Comment on the pull request
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -f evalgate-report.md ] || exit 0
+          gh pr comment "$PR" --body-file evalgate-report.md --edit-last \
+            || gh pr comment "$PR" --body-file evalgate-report.md
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evalgate-run
+          path: .evalgate/

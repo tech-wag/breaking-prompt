@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest-evalgate"
+version = "0.1.0"
+description = "Pytest for prompts: sampled LLM evals with flaky detection, baselines and a PR quality gate."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Athresh Guruprakash" }]
+requires-python = ">=3.10"
+dependencies = ["pytest>=7"]
+classifiers = ["Framework :: Pytest", "Programming Language :: Python :: 3"]
+
+[project.optional-dependencies]
+anthropic = ["anthropic"]
+openai = ["openai"]
+gemini = ["google-genai"]
+
+[project.entry-points.pytest11]
+evalgate = "evalgate.plugin"
+
+[project.scripts]
+evalgate = "evalgate.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/tech-wag/breaking-prompt"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["demo/peach"]
+evalgate_suite = "Peach support policy"
+evalgate_baseline = "evals/baseline.json"

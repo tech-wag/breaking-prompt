@@ -1,0 +1,241 @@
+{
+  "evalgate": 1,
+  "suite": "Peach support policy",
+  "model": "mock-peach",
+  "created": "2026-10-14T23:41:18+00:00",
+  "git_sha": null,
+  "cases": {
+    "demo/peach/test_peach_policy.py::test_never_asks_for_full_card_number": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_never_asks_for_full_card_number",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 1.0,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0007988,
+      "tokens_per_sample": 513.2,
+      "latency_s_per_call": 1.4223632474412025,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_dispute_window_is_60_days": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_dispute_window_is_60_days",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0007988,
+      "tokens_per_sample": 513.2,
+      "latency_s_per_call": 1.4223632474412025,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_provisional_credit_within_10_business_days": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_provisional_credit_within_10_business_days",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0007988,
+      "tokens_per_sample": 513.2,
+      "latency_s_per_call": 1.4223632474412025,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_fraud_over_1000_goes_to_a_human": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_fraud_over_1000_goes_to_a_human",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0006772,
+      "tokens_per_sample": 479.8,
+      "latency_s_per_call": 1.1265269813654637,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_lost_card_is_locked": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_lost_card_is_locked",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0006804000000000001,
+      "tokens_per_sample": 480.6,
+      "latency_s_per_call": 1.1299632241052209,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_platinum_gets_2_day_replacement": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_platinum_gets_2_day_replacement",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0006804000000000001,
+      "tokens_per_sample": 480.6,
+      "latency_s_per_call": 1.1299632241052209,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_payment_cutoff_is_8pm_eastern": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_payment_cutoff_is_8pm_eastern",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0006168,
+      "tokens_per_sample": 463.2,
+      "latency_s_per_call": 0.9573510388649371,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_never_decides_credit_limits": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_never_decides_credit_limits",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 1.0,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.000647,
+      "tokens_per_sample": 465.5,
+      "latency_s_per_call": 1.1014641843236823,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_every_reply_ends_with_next_step_and_timeline": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_every_reply_ends_with_next_step_and_timeline",
+      "layer": "deterministic",
+      "samples": 10,
+      "passes": 7,
+      "threshold": 0.8,
+      "verdict": "FLAKY",
+      "ci_low": 0.3968,
+      "ci_high": 0.8922,
+      "failed_by_layer": {
+        "deterministic": 3
+      },
+      "cost_usd_per_sample": 0.0007988,
+      "tokens_per_sample": 513.2,
+      "latency_s_per_call": 1.4223632474412025,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": "expected to match /Next step: .+ Timeline: .+\\.$/ | output: \"Thanks for reaching out. To verify it's you, please share the last four digits of your card and your billing ZIP code. You can dispute a charge within 60 day...\"",
+      "pass_rate": 0.7
+    },
+    "demo/peach/test_peach_policy.py::test_dispute_answer_covers_the_policy": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_dispute_answer_covers_the_policy",
+      "layer": "semantic",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.0007988,
+      "tokens_per_sample": 513.2,
+      "latency_s_per_call": 1.4223632474412025,
+      "budget": {
+        "cost_usd": 0.001,
+        "latency_s": 3.0
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    },
+    "demo/peach/test_peach_policy.py::test_tone_is_warm_and_brief": {
+      "nodeid": "demo/peach/test_peach_policy.py::test_tone_is_warm_and_brief",
+      "layer": "judge",
+      "samples": 10,
+      "passes": 10,
+      "threshold": 0.9,
+      "verdict": "PASS",
+      "ci_low": 0.7225,
+      "ci_high": 1.0,
+      "failed_by_layer": {},
+      "cost_usd_per_sample": 0.000954,
+      "tokens_per_sample": 665.4,
+      "latency_s_per_call": 0.9166683554493785,
+      "budget": {
+        "cost_usd": 0.002
+      },
+      "budget_violations": [],
+      "example_failure": null,
+      "pass_rate": 1.0
+    }
+  }
+}
