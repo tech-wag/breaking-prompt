@@ -131,6 +131,18 @@ pytest --evalgate-model anthropic:<model-id> --evalgate-update-baseline
 
 `evalgate report RUN.json --baseline BASE.json` re-renders a report from saved runs.
 
+## Claude Code skill
+
+The repo includes a [Claude Code](https://claude.com/claude-code) skill at [`.claude/skills/evalgate/SKILL.md`](.claude/skills/evalgate/SKILL.md). Open the repo in Claude Code and type:
+
+| Command | What it does |
+|---|---|
+| `/evalgate` or `/evalgate run` | Runs the gate and explains the result: each regressed, failing or flaky case, its p-value, and the prompt line that caused it |
+| `/evalgate add <rule>` | Writes an `@eval_case` test for a prompt rule, using the cheapest check that proves it, then runs it |
+| `/evalgate baseline` | Shows what would change, asks for confirmation, then rewrites `evals/baseline.json` |
+
+Extra pytest options pass straight through, e.g. `/evalgate run --evalgate-samples 20` or `/evalgate run --evalgate-model anthropic:<model-id>`. The skill never loosens a test, a threshold or the baseline to turn a failing gate green; it explains the failure and leaves the decision to you.
+
 ## How it compares
 
 [DeepEval](https://github.com/confident-ai/deepeval) and [promptfoo](https://github.com/promptfoo/promptfoo) are mature, broader eval frameworks with many built-in metrics. evalgate is deliberately narrower: it treats evals as test automation, and focuses on the gate itself (repeated sampling with a FLAKY verdict, statistical comparison with a baseline, cost budgets, and a PR report), using plain pytest and no service.
@@ -148,5 +160,7 @@ pip install -e .
 pytest tests        # the plugin's own tests
 pytest              # the Peach demo suite
 ```
+
+On Windows, two tests in `tests/test_plugin.py` currently fail. They start pytest in a second process and read its console output, and Windows uses different text encodings for writing and reading that output. The demo suite and the gate itself work; CI runs on Ubuntu.
 
 MIT licensed. Built by Athresh Guruprakash · [Tech with AG](https://instagram.com/tech.wag)

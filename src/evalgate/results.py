@@ -40,12 +40,12 @@ def build_run(cases: dict, model: str, suite: str) -> dict:
 def save(run: dict, path: str | Path) -> None:
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(run, indent=2) + "\n")
+    p.write_text(json.dumps(run, indent=2) + "\n", encoding="utf-8")
 
 
 def load(path: str | Path) -> dict | None:
     p = Path(path)
-    return json.loads(p.read_text()) if p.exists() else None
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
 def suite_cost(run: dict) -> float:

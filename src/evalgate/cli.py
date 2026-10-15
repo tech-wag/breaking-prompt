@@ -31,7 +31,7 @@ def main(argv=None) -> int:
     comp = results.compare(base, run, args.cost_tolerance) if base else None
     md = results.render_markdown(run, comp, base)
     if args.out:
-        Path(args.out).write_text(md)
+        Path(args.out).write_text(md, encoding="utf-8")
     else:
         print(md)
     return 1 if comp and comp.gate_failed else 0

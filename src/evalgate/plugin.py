@@ -140,7 +140,7 @@ def pytest_sessionfinish(session, exitstatus):
         results.save(run, base_path)
     report_path = config.getoption("--evalgate-report")
     if report_path:
-        Path(report_path).write_text(results.render_markdown(run, comp, base))
+        Path(report_path).write_text(results.render_markdown(run, comp, base), encoding="utf-8")
 
     config._evalgate = {"run": run, "comp": comp, "base": base, "updated": base_path if update else None}
     if comp is not None and comp.gate_failed and session.exitstatus == 0:

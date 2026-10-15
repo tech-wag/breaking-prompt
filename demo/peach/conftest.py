@@ -25,7 +25,7 @@ PROMPT_FILE = Path(os.getenv("PEACH_PROMPT_FILE", Path(__file__).parent / "promp
 
 @pytest.fixture(scope="session")
 def peach_prompt() -> str:
-    return PROMPT_FILE.read_text()
+    return PROMPT_FILE.read_text(encoding="utf-8")
 
 
 @pytest.fixture(scope="session")
